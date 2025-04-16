@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAITEX Header</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    .navbar {
+      background-color: #fff;
+      padding: 0.5rem 2rem;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: rgb(0, 0, 0);
+      font-weight: 700;
+    }
+
+    .nav-link {
+      color: black;
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      position: relative;
+    }
+
+    .nav-item {
+      margin-right: 3rem;
+    }
+
+    .navbar-nav {
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .dropdown-menu {
+      background-color: white;
+      border-radius: 0;
+      border: none;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hover color for links */
+    .nav-link:hover {
+      color: teal;
+    }
+
+    /* Dropdown arrow (using a pseudo-element) */
+    .dropdown-toggle::after {
+      content: "\f107";
+      /* Down arrow */
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      border-top: .0em solid;
+    }
+
+    /* Dropdown menu arrow spacing */
+    .dropdown-item {
+      font-size: 1rem;
+    }
+
+    /* Search icon styling */
+    .search-icon {
+      font-size: 1.3rem;
+      color: black;
+    }
+
+    .search-icon:hover {
+      color: teal;
+    }
+
+    /* Remove outline for focus */
+    .nav-link:focus,
+    .dropdown-toggle:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">SAITEX</a>
+
+      <!-- Toggler/collapsible Button for mobile view -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Philosophy</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="factoriesDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Factories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="factoriesDropdown">
+              <a class="dropdown-item" href="#">Factory 1</a>
+              <a class="dropdown-item" href="#">Factory 2</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Purpose</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="brandsDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Brands
+            </a>
+            <div class="dropdown-menu" aria-labelledby="brandsDropdown">
+              <a class="dropdown-item" href="#">Brand 1</a>
+              <a class="dropdown-item" href="#">Brand 2</a>
+            </div>
+          </li>
+        </ul>
+        
+        <a class="nav-link search-icon" href="#"><i class="fas fa-search"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
+</html>

@@ -7,102 +7,232 @@
     <link rel="icon" href="assets/img/favicon.JPG" sizes="192x192">
     <title>House Design</title>
     <link href="assets/css/styles.css" rel="stylesheet">
+    <style>
+        .search-filters {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        label i {
+            margin-right: 5px;
+        }
+
+        .dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-options {
+            display: none;
+        }
+
+        .dropdown-options.active {
+            display: block;
+        }
+
+        .dropdown-box {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .dropdown-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .dropdown-options label {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .dropdown-options label:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-options input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .dropdown.active .dropdown-options {
+            display: block;
+        }
+
+        button.more-filters-btn {
+            padding: 11px;
+            background-color: #a87b51;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            min-width: 150px;
+            width: 100%;
+            margin-top: 22px;
+        }
+
+        button.more-filters-btn:hover {
+            background-color: #916a46;
+        }
+
+        /* MOBILE STYLES */
+        @media (max-width: 768px) {
+
+            .search-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .dropdown-box {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            button.more-filters-btn {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .dropdown-options {
+                max-height: 200px;
+            }
+        }
+    </style>
 
 </head>
 
 <body class="blue-skin">
     <div id="main-wrapper">
         <div class="top-header">
-			<div class="container">
-				<div class="row">
+            <div class="container">
+                <div class="row">
 
-					<div class="col-lg-6 col-md-6">
-						<div class="cn-info">
-							<ul>
-								<li><i class="ti-email"></i>Build in: Melbourne</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<div class="filter-search-box">
-							<div class="form-group">
-								<div class="position-relative">
-									<input type="text" class="form-control rounded-3 ps-5"
-										placeholder="Search by space name…">
-									<div class="position-absolute top-50 start-0 translate-middle-y ms-2">
-										<span class="svg-icon text-primary svg-icon-2hx">
-											<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
-													rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
-												<path
-													d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
-													fill="currentColor" />
-											</svg>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="cn-info">
+                            <ul>
+                                <li><i class="ti-email"></i>Build in: Melbourne</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="filter-search-box">
+                            <div class="form-group">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control rounded-3 ps-5"
+                                        placeholder="Search by space name…">
+                                    <div class="position-absolute top-50 start-0 translate-middle-y ms-2">
+                                        <span class="svg-icon text-primary svg-icon-2hx">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
+                                                    rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                                                <path
+                                                    d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                    fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-				</div>
-			</div>
-		</div>
-		<div class="mid-header">
-			<div class="container">
-				<div class="row">
+                </div>
+            </div>
+        </div>
+        <div class="mid-header">
+            <div class="container">
+                <div class="row">
 
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<a class="nav-brand text-logo" href="index.html">
-							<img src="assets/img/web-logo.webp" alt="">
-						</a>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<ul class="top-social">
-							<li>
-								<i class="fa-solid fa-phone"></i>91 256 584 5748
-							</li>
-							<li>
-								<a href="#" data-bs-toggle="modal" data-bs-target="#login"
-									class="fw-medium text-muted-2" class="btn top-btn btn-call-to-act"> <i
-										class="fa-regular fa-envelope "></i>Enquire</a>
-							</li>
-						</ul>
-					</div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <a class="nav-brand text-logo" href="index.html">
+                            <img src="assets/img/web-logo.webp" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <ul class="top-social">
+                            <li>
+                                <i class="fa-solid fa-phone"></i>91 256 584 5748
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#login"
+                                    class="fw-medium text-muted-2" class="btn top-btn btn-call-to-act"> <i
+                                        class="fa-regular fa-envelope "></i>Enquire</a>
+                            </li>
+                        </ul>
+                    </div>
 
-				</div>
-			</div>
-		</div>
-		<div class="header ">
+                </div>
+            </div>
+        </div>
+        <div class="header ">
             <div class="container">
                 <nav id="navigation" class="navigation navigation-landscape">
                     <div class="nav-header">
                         <div class="nav-toggle"></div>
-						<a class="nav-logo text-logo mobile-logo " href="index.html">
-							<img src="assets/img/web-logo.webp" alt="">
-						</a>
+                        <a class="nav-logo text-logo mobile-logo " href="index.html">
+                            <img src="assets/img/web-logo.webp" alt="">
+                        </a>
 
-						<div class="mobile-icon-menu">
-							<i class="fa-solid fa-phone "></i> <i
-							class="fa-regular fa-envelope "></i>
-						</div>
+                        <div class="mobile-icon-menu">
+                            <i class="fa-solid fa-phone "></i> <i class="fa-regular fa-envelope "></i>
+                        </div>
                     </div>
                     <div class="nav-menus-wrapper" style="transition-property: none;">
                         <ul class="nav-menu">
 
-                            <li ><a href="index.html">Home</a> </li>
+                            <li><a href="index.html">Home</a> </li>
 
-                            <li><a >House Designs<span class="submenu-indicator"></span></a>
+                            <li><a>House Designs<span class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
                                     <li><a href="house-design.html">House designs</a></li>
-                                    <li><a >The Metricon range<span
-                                                class="submenu-indicator"></span></a>
+                                    <li><a>The Metricon range<span class="submenu-indicator"></span></a>
                                         <ul class="nav-dropdown nav-submenu">
                                             <li><a href="house-solution.html">House Solution</a></li>
                                             <li><a href="freedom.html">Freedom</a></li>
                                             <li><a href="signature.html">Signature</a></li>
-                                           
+
                                         </ul>
                                     </li>
                                     <li><a href="latest-offers.html">Latest offers</a></li>
@@ -132,13 +262,11 @@
                                     <li><a href="video-gallery.html">Video gallery</a></li>
                                 </ul>
                             </li>
-                            <li><a >Build with Metricon<span
-                                        class="submenu-indicator"></span></a>
+                            <li><a>Build with Metricon<span class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
 
                                     <li><a href="Why-build-new.html"> Why build new?</a></li>
-                                    <li><a >Costs and finance<span
-                                                class="submenu-indicator"></span></a>
+                                    <li><a>Costs and finance<span class="submenu-indicator"></span></a>
                                         <ul class="nav-dropdown nav-submenu">
                                             <li><a href="Calculators.html">Calculators</a></li>
                                             <li><a href="Saving-new-home.html">Saving for a new home</a></li>
@@ -180,7 +308,7 @@
                                 <ol class="breadcrumb d-inline-block bg-transparent list-inline py-0 pl-0">
                                     <li class="list-inline-item"><a href="index.html">Home <i class="fa fa-angle-right"
                                                 aria-hidden="true"></i></a></li>
-                                    <li class="list-inline-item   active">
+                                    <li class="list-inline-item  active">
                                         House Designs</li>
                                 </ol>
                             </div>
@@ -197,6 +325,197 @@
 
             </div>
         </div>
+
+        <div class="container ">
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="storeys">
+                        <i class="fa-solid fa-building-shield fs-sm"></i>
+                        STOREYS
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="storeys-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="checkbox" value="any" class="storeys-option"> Any
+                            </label>
+                            <label>
+                                <input type="checkbox" value="single" class="storeys-option"> Single
+                            </label>
+                            <label>
+                                <input type="checkbox" value="double" class="storeys-option"> Double
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="beds">
+                        <i class="fa-solid fa-bed fs-sm"></i>
+                        BEDS
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="beds-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="checkbox" value="any" class="beds-option"> Any
+                            </label>
+                            <label>
+                                <input type="checkbox" value="1" class="beds-option"> 1 Bed
+                            </label>
+                            <label>
+                                <input type="checkbox" value="2" class="beds-option"> 2 Beds
+                            </label>
+                            <label>
+                                <input type="checkbox" value="3" class="beds-option"> 3 Beds
+                            </label>
+                            <label>
+                                <input type="checkbox" value="4" class="beds-option"> 4+ Beds
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label for="beds">
+                        <i class="fa-solid fa-car fs-sm"></i>
+                        Car space
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="car-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="checkbox" value="any" class="car-option"> Any
+                            </label>
+                            <label>
+                                <input type="checkbox" value="1" class="car-option"> 1 car
+                            </label>
+                            <label>
+                                <input type="checkbox" value="2" class="car-option"> 2 car
+                            </label>
+                            <label>
+                                <input type="checkbox" value="3" class="car-option"> 3 car
+                            </label>
+                            <label>
+                                <input type="checkbox" value="4" class="car-option"> 4+ car
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label for="baths">
+                        <i class="fa-solid fa-bath fs-sm"></i>
+                        BATHS
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="baths-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="checkbox" value="any" class="baths-option"> Any
+                            </label>
+                            <label>
+                                <input type="checkbox" value="1" class="baths-option"> 1 Bath
+                            </label>
+                            <label>
+                                <input type="checkbox" value="2" class="baths-option"> 2 Baths
+                            </label>
+                            <label>
+                                <input type="checkbox" value="3" class="baths-option"> 3 Baths
+                            </label>
+                            <label>
+                                <input type="checkbox" value="4" class="baths-option"> 4+ Baths
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAX PRICE -->
+                <div class="filter-group">
+                    <label for="max-price">
+                        <i class="fa-solid fa-dollar-sign fs-sm"></i>
+                        MAX PRICE
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="price-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="radio" name="price" value="any" class="price-option"> Any
+                            </label>
+                            <label>
+                                <input type="radio" name="price" value="500k" class="price-option">$500K
+                            </label>
+                            <label>
+                                <input type="radio" name="price" value="1M" class="price-option">$1M
+                            </label>
+                            <label>
+                                <input type="radio" name="price" value="2M" class="price-option">$2M
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Min block width -->
+                <div class="filter-group">
+                    <label for="min-price">
+                        <i class="fa-solid fa-clone fs-sm"></i>
+                        Min block width
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="min-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="radio" name="min-block" value="any" class="min-option"> Any
+                            </label>
+                            <label>
+                                <input type="radio" name="min-block" value="8.9m" class="min-option"> 8.9m
+                            </label>
+                            <label>
+                                <input type="radio" name="min-block" value="9m" class="min-option"> 9m (88)
+                            </label>
+                            <label>
+                                <input type="radio" name="min-block" value="10m" class="min-option"> 10m
+                            </label>
+                            <label>
+                                <input type="radio" name="min-block" value="10.5m" class="min-option"> 10.5m
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="filter-group">
+                    <label for="max-price">
+                        <i class="fa-solid fa-dollar-sign fs-sm"></i>
+                        Max block width
+                    </label>
+                    <div class="dropdown">
+                        <div class="dropdown-box" id="max-dropdown">Any</div>
+                        <div class="dropdown-options">
+                            <label>
+                                <input type="radio" name="max-block" value="any" class="max-option"> Any
+                            </label>
+                            <label>
+                                <input type="radio" name="max-block" value="8.9m" class="max-option"> 8.9 m
+                            </label>
+                            <label>
+                                <input type="radio" name="max-block" value="9m" class="max-option"> 9m (88)
+                            </label>
+                            <label>
+                                <input type="radio" name="max-block" value="10m" class="max-option"> 10m
+                            </label>
+                            <label>
+                                <input type="radio" name="max-block" value="10.5m" class="max-option"> 10.5m
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+
+            
+                <div class="filter-group">
+                    <button class="more-filters-btn">More filters</button>
+                </div>
+
+            </div>
+        </div>
+
 
         <section class="house-flat ">
             <div class="m-5">
@@ -255,8 +574,9 @@
                                             Beds</span>
                                     </div>
                                     <div class="listing-card d-flex align-items-center">
-                                        <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i class="fas fa-car"></i></div><span class="text-muted-2">4
-                                            </span>
+                                        <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i
+                                                class="fas fa-car"></i></div><span class="text-muted-2">4
+                                        </span>
                                     </div>
                                     <div class="listing-card d-flex align-items-center">
                                         <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i
@@ -276,7 +596,8 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="house-wrap-grid h-100 shadow">
                             <div class="house-thumb">
-                                <a href="house-design-details.html"><img src="assets/img/site-img/house3.avif" class="img-fluid" alt=""></a>
+                                <a href="house-design-details.html"><img src="assets/img/site-img/house3.avif"
+                                        class="img-fluid" alt=""></a>
                             </div>
                             <div class="house-body">
                                 <h4 class="bl-title"><a href="">Winchester</a></h4>
@@ -291,8 +612,9 @@
                                             class="text-muted-2">4BHK</span>
                                     </div>
                                     <div class="listing-card d-flex align-items-center">
-                                        <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i class="fas fa-car"></i></div><span class="text-muted-2">4
-                                            </span>
+                                        <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i
+                                                class="fas fa-car"></i></div><span class="text-muted-2">4
+                                        </span>
                                     </div>
                                     <div class="listing-card d-flex align-items-center">
                                         <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i
@@ -316,7 +638,8 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="house-wrap-grid h-100 shadow">
                             <div class="house-thumb">
-                                <a href="house-design-details.html"><img src="assets/img/site-img/house4.avif" class="img-fluid" alt=""></a>
+                                <a href="house-design-details.html"><img src="assets/img/site-img/house4.avif"
+                                        class="img-fluid" alt=""></a>
                             </div>
                             <div class="house-body">
                                 <h4 class="bl-title"><a href="">Winchester</a></h4>
@@ -336,8 +659,9 @@
                                             Beds</span>
                                     </div>
                                     <div class="listing-card d-flex align-items-center">
-                                        <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i class="fas fa-car"></i></div><span class="text-muted-2">4
-                                            </span>
+                                        <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i
+                                                class="fas fa-car"></i></div><span class="text-muted-2">4
+                                        </span>
                                     </div>
                                     <div class="listing-card d-flex align-items-center">
                                         <div class="square--30 text-muted-2 fs-sm circle gray-simple me-2"><i
@@ -356,7 +680,8 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="house-wrap-grid h-100 shadow">
                             <div class="house-thumb">
-                                <a href="house-design-details.html"><img src="assets/img/site-img/house3.avif" class="img-fluid" alt=""></a>
+                                <a href="house-design-details.html"><img src="assets/img/site-img/house3.avif"
+                                        class="img-fluid" alt=""></a>
                             </div>
                             <div class="house-body">
                                 <h4 class="bl-title"><a href="">Winchester</a></h4>
@@ -385,7 +710,7 @@
                                                 class="fa-solid fa-clone fs-sm"></i></div><span
                                             class="text-muted-2">1900 SQFT</span>
                                     </div>
-                                   
+
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore. </p>
@@ -516,7 +841,7 @@
 
             </div>
         </section>
-       
+
         <footer class="dark-footer ">
             <div class=" call-to-act-wrap">
                 <div class="container">
@@ -688,6 +1013,158 @@
     <script src="assets/js/custom.js"></script>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.dropdown-box').forEach(dropdownBox => {
+                dropdownBox.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    dropdownBox.parentElement.classList.toggle('active');
+                });
+            });
+
+            function updateSelectedText(dropdown, optionsClass) {
+                const selectedOptions = Array.from(document.querySelectorAll(optionsClass))
+                    .filter(option => option.checked)
+                    .map(option => option.parentElement.textContent.trim());
+
+                if (selectedOptions.length > 1) {
+                    dropdown.textContent = `${selectedOptions.length} selected`;
+                } else if (selectedOptions.length === 1) {
+                    dropdown.textContent = selectedOptions[0];
+                } else {
+                    dropdown.textContent = 'Any';
+                }
+            }
+
+            function handleAnyOption(anyOptionClass, otherOptionClass) {
+                const anyOption = document.querySelector(anyOptionClass);
+                const otherOptions = document.querySelectorAll(otherOptionClass);
+
+                anyOption.addEventListener('change', () => {
+                    if (anyOption.checked) {
+                        otherOptions.forEach(option => {
+                            if (option !== anyOption) option.checked = false;
+                        });
+                    }
+                    updateSelectedText(anyOption.closest('.dropdown').querySelector('.dropdown-box'), otherOptionClass);
+                });
+
+                otherOptions.forEach(option => {
+                    if (option !== anyOption) {
+                        option.addEventListener('change', () => {
+                            if (option.checked) {
+                                anyOption.checked = false;
+                            }
+                            updateSelectedText(anyOption.closest('.dropdown').querySelector('.dropdown-box'), otherOptionClass);
+                        });
+                    }
+                });
+            }
+
+            document.querySelectorAll('.dropdown-box').forEach(box => {
+                box.addEventListener('click', () => {
+                    document.querySelectorAll('.dropdown-options').forEach(opt => opt.style.display = 'none');
+                    const options = box.nextElementSibling;
+                    options.style.display = (options.style.display === 'block') ? 'none' : 'block';
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-options').forEach(opt => opt.style.display = 'none');
+                }
+            });
+
+
+
+            function initializeDropdown(dropdownId, optionClass, anyOptionValue) {
+                const dropdown = document.getElementById(dropdownId);
+                handleAnyOption(`${optionClass}[value="${anyOptionValue}"]`, optionClass);
+
+                document.querySelectorAll(optionClass).forEach(option => {
+                    option.addEventListener('change', () => {
+                        updateSelectedText(dropdown, optionClass);
+                    });
+                });
+            }
+
+            function initializeDropdown(dropdownId, optionClass, anyOptionValue) {
+                const dropdown = document.getElementById(dropdownId);
+                handleAnyOption(`${optionClass}[value="${anyOptionValue}"]`, optionClass);
+
+                document.querySelectorAll(optionClass).forEach(option => {
+                    option.addEventListener('change', () => {
+                        updateSelectedText(dropdown, optionClass);
+                    });
+                });
+            }
+
+            // Storeys
+            const storeysDropdown = document.getElementById('storeys-dropdown');
+            handleAnyOption('.storeys-option[value="any"]', '.storeys-option');
+
+            document.querySelectorAll('.storeys-option').forEach(option => {
+                option.addEventListener('change', () => {
+                    updateSelectedText(storeysDropdown, '.storeys-option');
+                });
+            });
+
+            // Beds
+            const bedsDropdown = document.getElementById('beds-dropdown');
+            handleAnyOption('.beds-option[value="any"]', '.beds-option');
+
+            document.querySelectorAll('.beds-option').forEach(option => {
+                option.addEventListener('change', () => {
+                    updateSelectedText(bedsDropdown, '.beds-option');
+                });
+            });
+
+            // Baths
+            const bathsDropdown = document.getElementById('baths-dropdown');
+            handleAnyOption('.baths-option[value="any"]', '.baths-option');
+
+            document.querySelectorAll('.baths-option').forEach(option => {
+                option.addEventListener('change', () => {
+                    updateSelectedText(bathsDropdown, '.baths-option');
+                });
+            });
+            const carDropdown = document.getElementById('car-dropdown');
+            handleAnyOption('.car-option[value="any"]', '.car-option');
+
+            document.querySelectorAll('.car-option').forEach(option => {
+                option.addEventListener('change', () => {
+                    updateSelectedText(carDropdown, '.car-option');
+                });
+            });
+            const priceDropdown = document.getElementById('price-dropdown');
+            document.querySelectorAll('.price-option').forEach(option => {
+                option.addEventListener('change', () => {
+                    updateSelectedText(priceDropdown, '.price-option');
+                });
+            });
+            const minDropdown = document.getElementById('min-dropdown');
+            document.querySelectorAll('.min-option').forEach(option => {
+                option.addEventListener('change', () => {
+                    updateSelectedText(minDropdown, '.min-option');
+                });
+            });
+
+            // const maxDropdown = document.getElementById('max-dropdown');
+            // document.querySelectorAll('.max-option').forEach(option => {
+            //     option.addEventListener('change', () => {
+            //         updateSelectedText(maxDropdown, '.max-option');
+            //     });
+            // });
+            window.addEventListener('click', (event) => {
+                if (!event.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+    </script>
 
 </body>
 

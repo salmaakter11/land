@@ -8,6 +8,78 @@
     <title>House Design</title>
     <link href="assets/css/styles.css" rel="stylesheet">
     <style>
+        .Design-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #Design {
+            width: 100%;
+            z-index: 997;
+            padding: 10px;
+            transition: all 0.3s ease;
+            justify-content: center;
+        }
+
+        .sticky {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+        }
+
+
+        .container.sticky {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .Design {
+            padding: 10px 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .sticky {
+                position: fixed;
+                top: 137px;
+                left: 0;
+                width: 100%;
+                box-shadow: 0 4px 2px -2px gray;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .sticky {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                box-shadow: 0 4px 2px -2px gray;
+            }
+        }
+        @media (max-width: 500px) {
+            .sticky {
+               position: inherit;
+               
+            }
+        }
+        @media (max-width: 468px) {
+            .Design-text {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .Design-text a {
+                margin-bottom: 10px;
+            }
+
+            #Design {
+                padding: 15px;
+            }
+        }
+    </style>
+    <style>
         .area {
             display: flex;
             justify-content: space-around;
@@ -30,102 +102,137 @@
             justify-content: center;
             margin: 20px;
         }
+
+        .floor-plan {
+            overflow: hidden;
+            display: inline-block;
+            border: 2px solid #ddd;
+        }
+
+        #floorPlan {
+            max-width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .controls {
+            margin-top: 10px;
+        }
+
+        .controls i {
+            font-size: 24px;
+            margin: 10px;
+            cursor: pointer;
+            color: #4CAF50;
+        }
+
+        .controls i:hover {
+            color: #45a049;
+        }
+
+        .controls i:active {
+            transform: scale(0.95);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            gap: 24px;
+        }
     </style>
 </head>
 
 <body class="blue-skin">
     <div id="main-wrapper">
-       <div class="top-header">
-			<div class="container">
-				<div class="row">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
 
-					<div class="col-lg-6 col-md-6">
-						<div class="cn-info">
-							<ul>
-								<li><i class="ti-email"></i>Build in: Melbourne</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<div class="filter-search-box">
-							<div class="form-group">
-								<div class="position-relative">
-									<input type="text" class="form-control rounded-3 ps-5"
-										placeholder="Search by space name…">
-									<div class="position-absolute top-50 start-0 translate-middle-y ms-2">
-										<span class="svg-icon text-primary svg-icon-2hx">
-											<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-												xmlns="http://www.w3.org/2000/svg">
-												<rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
-													rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
-												<path
-													d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
-													fill="currentColor" />
-											</svg>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="cn-info">
+                            <ul>
+                                <li><i class="ti-email"></i>Build in: Melbourne</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="filter-search-box">
+                            <div class="form-group">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control rounded-3 ps-5"
+                                        placeholder="Search by space name…">
+                                    <div class="position-absolute top-50 start-0 translate-middle-y ms-2">
+                                        <span class="svg-icon text-primary svg-icon-2hx">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
+                                                    rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                                                <path
+                                                    d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                    fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-				</div>
-			</div>
-		</div>
-		<div class="mid-header">
-			<div class="container">
-				<div class="row">
+                </div>
+            </div>
+        </div>
+        <div class="mid-header">
+            <div class="container">
+                <div class="row">
 
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<a class="nav-brand text-logo" href="index.html">
-							<img src="assets/img/web-logo.webp" alt="">
-						</a>
-					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<ul class="top-social">
-							<li>
-								<i class="fa-solid fa-phone"></i>91 256 584 5748
-							</li>
-							<li>
-								<a href="#" data-bs-toggle="modal" data-bs-target="#login"
-									class="fw-medium text-muted-2" class="btn top-btn btn-call-to-act"> <i
-										class="fa-regular fa-envelope "></i>Enquire</a>
-							</li>
-						</ul>
-					</div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <a class="nav-brand text-logo" href="index.html">
+                            <img src="assets/img/web-logo.webp" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <ul class="top-social">
+                            <li>
+                                <i class="fa-solid fa-phone"></i>91 256 584 5748
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#login"
+                                    class="fw-medium text-muted-2" class="btn top-btn btn-call-to-act"> <i
+                                        class="fa-regular fa-envelope "></i>Enquire</a>
+                            </li>
+                        </ul>
+                    </div>
 
-				</div>
-			</div>
-		</div>
-		<div class="header ">
+                </div>
+            </div>
+        </div>
+        <div class="header ">
             <div class="container">
                 <nav id="navigation" class="navigation navigation-landscape">
                     <div class="nav-header">
                         <div class="nav-toggle"></div>
-						<a class="nav-logo text-logo mobile-logo " href="index.html">
-							<img src="assets/img/web-logo.webp" alt="">
-						</a>
+                        <a class="nav-logo text-logo mobile-logo " href="index.html">
+                            <img src="assets/img/web-logo.webp" alt="">
+                        </a>
 
-						<div class="mobile-icon-menu">
-							<i class="fa-solid fa-phone "></i> <i
-							class="fa-regular fa-envelope "></i>
-						</div>
+                        <div class="mobile-icon-menu">
+                            <i class="fa-solid fa-phone "></i> <i class="fa-regular fa-envelope "></i>
+                        </div>
                     </div>
                     <div class="nav-menus-wrapper" style="transition-property: none;">
                         <ul class="nav-menu">
 
-                            <li ><a href="index.html">Home</a> </li>
+                            <li><a href="index.html">Home</a> </li>
 
-                            <li><a >House Designs<span class="submenu-indicator"></span></a>
+                            <li><a>House Designs<span class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
                                     <li><a href="house-design.html">House designs</a></li>
-                                    <li><a >The Metricon range<span
-                                                class="submenu-indicator"></span></a>
+                                    <li><a>The Metricon range<span class="submenu-indicator"></span></a>
                                         <ul class="nav-dropdown nav-submenu">
                                             <li><a href="house-solution.html">House Solution</a></li>
                                             <li><a href="freedom.html">Freedom</a></li>
                                             <li><a href="signature.html">Signature</a></li>
-                                           
+
                                         </ul>
                                     </li>
                                     <li><a href="latest-offers.html">Latest offers</a></li>
@@ -155,13 +262,11 @@
                                     <li><a href="video-gallery.html">Video gallery</a></li>
                                 </ul>
                             </li>
-                            <li><a >Build with Metricon<span
-                                        class="submenu-indicator"></span></a>
+                            <li><a>Build with Metricon<span class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
 
                                     <li><a href="Why-build-new.html"> Why build new?</a></li>
-                                    <li><a >Costs and finance<span
-                                                class="submenu-indicator"></span></a>
+                                    <li><a>Costs and finance<span class="submenu-indicator"></span></a>
                                         <ul class="nav-dropdown nav-submenu">
                                             <li><a href="Calculators.html">Calculators</a></li>
                                             <li><a href="Saving-new-home.html">Saving for a new home</a></li>
@@ -203,11 +308,10 @@
                                 <ol class="breadcrumb d-inline-block bg-transparent list-inline py-0 pl-0">
                                     <li class="list-inline-item"><a href="index.html">Home <i class="fa fa-angle-right"
                                                 aria-hidden="true"></i></a></li>
-                                    <li class="list-inline-item   "><i class="fa fa-angle-right"
-                                            aria-hidden="true"></i>
-                                           house Design Details
+                                    <li class="list-inline-item   "><i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        house Design Details
                                     </li>
-                            
+
 
                                 </ol>
                             </div>
@@ -220,17 +324,28 @@
 
             </div>
         </div>
-        <div class="container">
-            <nav class="navbar fixed-top navbar-dark " style="margin-top: 160px; background-color: #f7f7f7;">
-                <span class="navbar-text">
-                    <a href="#Gellery"> <button class="btn btn-outline-success" type="submit">Gellery</button></a>
-                    <a href="#Floorplan"> <button class="btn btn-outline-success" type="submit">Floorplan </button></a>
-                    <a href="#Keyfeatures"> <button class="btn btn-outline-success" type="submit"> Key
-                            features</button></a>
-                    <a href="#Inclusions"> <button class="btn btn-outline-success" type="submit">
-                            Inclusions</button></a>
+        <!-- <div class="container">
+            <nav id="Design" class="Design Design-dark container" style="background-color: #f7f7f7;">
+                <span class="Design-text">
+                    <a href="#Gellery"><button class="btn btn-outline-success" type="button">Gallery</button></a>
+                    <a href="#Floorplan"><button class="btn btn-outline-success" type="button">Floorplan</button></a>
+                    <a href="#Keyfeatures"><button class="btn btn-outline-success" type="button">Key
+                            Features</button></a>
+                    <a href="#Inclusions"><button class="btn btn-outline-success" type="button">Inclusions</button></a>
                 </span>
-                <a class="navbar-brand text-black" href="#">1300 786 773</a>
+                <a class="Design-brand text-black" href="#">1300 786 773</a>
+            </nav>
+        </div> -->
+
+        <div class="container">
+            <nav id="Design" class="Design Design-dark" style="background-color: #fff;">
+                <span class="Design-text">
+                    <a href="#Gellery"><button class="btn btn-outline-success" type="button">Gallery</button></a>
+                    <a href="#Floorplan"><button class="btn btn-outline-success" type="button">Floorplan</button></a>
+                    <a href="#Keyfeatures"><button class="btn btn-outline-success" type="button">Key
+                            Features</button></a>
+                    <a href="#Inclusions"><button class="btn btn-outline-success" type="button">Inclusions</button></a>
+                </span>
             </nav>
         </div>
 
@@ -251,117 +366,148 @@
             </div>
         </div>
         <div id="Floorplan" style="padding: 80px 0 80px;">
-           <div class="container">
-            <div class="area ">
-                <div>Total Area: 15.15 sq</div>
-                <div>House Area: 12.47 sq</div>
-                <div>Min Block Width: 10 m</div>
-                <div>Min Block Depth: 28 m</div>
-                <div>House Width: 8.03 m</div>
-                <div>House Length: 19.55 m</div>
+            <div class="container">
+                <div class="area ">
+                    <div>Total Area: 15.15 sq</div>
+                    <div>House Area: 12.47 sq</div>
+                    <div>Min Block Width: 10 m</div>
+                    <div>Min Block Depth: 28 m</div>
+                    <div>House Width: 8.03 m</div>
+                    <div>House Length: 19.55 m</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-3">
+                        <div class="feature-icons">
+                            <div>
+                                <i class="fa-solid fa-building-shield fs-sm"></i>
+                                <p>3</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-clone fs-sm"></i>
+                                <p>6</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-car"></i>
+                                <p>6</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-bed fs-sm"></i>
+                                <p>6</p>
+                            </div>
+                        </div>
+                        <p>Features</p>
+                        <p>Design options</p>
+                        <p>No options available at this time</p>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="controls d-flex flex-column flex-md-row justify-content-between align-items-center">
+                            <div>
+                                <p class="p-1 mb-2 mb-md-0">Shift + mouse wheel to zoom</p>
+                            </div>
+                            <div class="d-flex">
+                                <i class="fas fa-search-plus mx-2" id="zoomIn" title="Zoom In"></i>
+                                <i class="fas fa-search-minus mx-2" id="zoomOut" title="Zoom Out"></i>
+                                <i class="fas fa-sync-alt mx-2" id="resetZoom" title="Reset"></i>
+                            </div>
+                        </div>
+
+                        <div class="floor-plan" id="floorPlanContainer">
+                            <img src="assets/img/site-img/house-idea.JPG" alt="Floor Plan" class="img-fluid"
+                                id="floorPlan">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="property_block_wrap style-2">
+                    <div class="property_block_wrap_header" style="background-color: #e6e4e4;">
+                        <a data-bs-toggle="collapse" data-parent="#features" data-bs-target="#clOne"
+                            aria-controls="clOne" href="javascript:void(0);" aria-expanded="true" class="">
+                            <h4 class="property_block_title">Area and Dimensions
+                                *Measurements based on no customisations being selected</h4>
+                        </a>
+                    </div>
+                    <div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne">
+                        <div class="block-body">
+                            <ul class="deatil_features">
+                                <li><strong>Bedrooms:</strong>3 Beds</li>
+                                <li><strong>Bathrooms:</strong>2 Bath</li>
+                                <li><strong>Areas:</strong>4,240 sq ft</li>
+                                <li><strong>Garage</strong>1</li>
+                                <li><strong>Property Type:</strong>Apartment</li>
+                                <li><strong>Year:</strong>Built1982</li>
+                                <li><strong>Status:</strong>Active</li>
+                                <li><strong>Cooling:</strong>Central A/C</li>
+                                <li><strong>Heating Type:</strong>Forced Air</li>
+                                <li><strong>Kitchen Features:</strong>Kitchen Facilities</li>
+                                <li><strong>Exterior:</strong>FinishBrick</li>
+                                <li><strong>Swimming Pool:</strong>Yes</li>
+                                <li><strong>Elevetor:</strong>Yes</li>
+                                <li><strong>Fireplace:</strong>Yes</li>
+                                <li><strong>Free WiFi:</strong>No</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="row">
-                <div class="col-xl-3">
-                    <div class="feature-icons">
-                        <div>
-                            <i class="fa-solid fa-building-shield fs-sm"></i>
-                            <p>3</p>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-clone fs-sm"></i>
-                            <p>6</p>
-                        </div>
-                        <div>
-                            <i class="fas fa-car"></i>
-                            <p>6</p>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-bed fs-sm"></i>
-                            <p>6</p>
-                        </div>
-                    </div>
-                    <p>Features</p>
-                    <p>Design options</p>
-                    <p>No options available at this time</p>
-                </div>
-                <div class="col-xl-9">
-                    <div class="floor-plan">
-                        <img src="assets/img/site-img/house-idea.JPG" alt="Floor Plan" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="property_block_wrap style-2" >        
-                <div class="property_block_wrap_header" style="background-color: #e6e4e4;">
-                    <a data-bs-toggle="collapse" data-parent="#features" data-bs-target="#clOne" aria-controls="clOne" href="javascript:void(0);" aria-expanded="true" class=""><h4 class="property_block_title">Area and Dimensions
-                        *Measurements based on no customisations being selected</h4></a>
-                </div>
-                <div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne" >
-                    <div class="block-body">
-                        <ul class="deatil_features">
-                            <li><strong>Bedrooms:</strong>3 Beds</li>
-                            <li><strong>Bathrooms:</strong>2 Bath</li>
-                            <li><strong>Areas:</strong>4,240 sq ft</li>
-                            <li><strong>Garage</strong>1</li>
-                            <li><strong>Property Type:</strong>Apartment</li>
-                            <li><strong>Year:</strong>Built1982</li>
-                            <li><strong>Status:</strong>Active</li>
-                            <li><strong>Cooling:</strong>Central A/C</li>
-                            <li><strong>Heating Type:</strong>Forced Air</li>
-                            <li><strong>Kitchen Features:</strong>Kitchen Facilities</li>
-                            <li><strong>Exterior:</strong>FinishBrick</li>
-                            <li><strong>Swimming Pool:</strong>Yes</li>
-                            <li><strong>Elevetor:</strong>Yes</li>
-                            <li><strong>Fireplace:</strong>Yes</li>
-                            <li><strong>Free WiFi:</strong>No</li>
-                            
-                        </ul>
-                    </div>
-                </div>
-                
-            </div>
-           </div>
-            
 
-            
+
 
         </div>
         <div id="Keyfeatures" style="padding: 80px 0 80px;">
-           <div class="container">
-            <h3 class="text-center">Compact design and practicality</h3>
-            <p class="border-bottom">With its compact design and great use of space, the Aldinga is sure to present the growing family with a fantastic living arrangement. With a private master bedroom, featuring its own ensuite and walk-in-robe, this great house design also contains two other good sized bedrooms as well as a large open plan living area towards the back of the home. With a sliding door off the kitchen and family room, you can also step outside into a great Australian backyard. A choice of attractive facades completes this compact home.</p>
-            <p>*Photographs on this web page may depict fixtures, finishes & features not supplied by Metricon such as landscaping and swimming pools. Accordingly any prices on our website don’t include the supply of any of those items. Also, where our homes come in different floor plan sizes then the facades shown are generally based on the largest floor plan for that home, hence the façade may not be an accurate representation of all floorplan sizes. Accordingly the facades are a representation only and may include upgrades. For detailed home pricing and façade information, please speak to a New Home Advisor.</p>
-           </div>
+            <div class="container">
+                <h3 class="text-center">Compact design and practicality</h3>
+                <p class="border-bottom">With its compact design and great use of space, the Aldinga is sure to present
+                    the growing family with a fantastic living arrangement. With a private master bedroom, featuring its
+                    own ensuite and walk-in-robe, this great house design also contains two other good sized bedrooms as
+                    well as a large open plan living area towards the back of the home. With a sliding door off the
+                    kitchen and family room, you can also step outside into a great Australian backyard. A choice of
+                    attractive facades completes this compact home.</p>
+                <p>*Photographs on this web page may depict fixtures, finishes & features not supplied by Metricon such
+                    as landscaping and swimming pools. Accordingly any prices on our website don’t include the supply of
+                    any of those items. Also, where our homes come in different floor plan sizes then the facades shown
+                    are generally based on the largest floor plan for that home, hence the façade may not be an accurate
+                    representation of all floorplan sizes. Accordingly the facades are a representation only and may
+                    include upgrades. For detailed home pricing and façade information, please speak to a New Home
+                    Advisor.</p>
+            </div>
         </div>
         <div id="Inclusions" style="padding: 80px 0 80px;">
             <div class="container">
-                <div class="image-cover" style="background:url(assets/img/site-img/banner-2.jpg) no-repeat;" data-overlay="4">
+                <div class="image-cover" style="background:url(assets/img/site-img/banner-2.jpg) no-repeat;"
+                    data-overlay="4">
                     <div class="ht-80"></div>
                     <div class="container position-relative z-1">
                         <div class="row justify-content-center">
-        
+
                             <div class="col-lg-8 col-md-8">
-        
+
                                 <div class="caption-wrap-content text-center">
-                                    <h2 class="fs-1">hen you build with HomeSolution by Metricon, you'll enjoy a fantastic selection of inclusions at unbeatable value</h2>
-                                    <p class="mb-5">Live in absolute comfort with our thoughtful touches and stylish inclusions which make a house your home. Our team of interior design experts at Studio M will help you explore our extensive range of fixtures, fittings, colour finishes and material selections.</p>
-        
+                                    <h2 class="fs-1">hen you build with HomeSolution by Metricon, you'll enjoy a
+                                        fantastic selection of inclusions at unbeatable value</h2>
+                                    <p class="mb-5">Live in absolute comfort with our thoughtful touches and stylish
+                                        inclusions which make a house your home. Our team of interior design experts at
+                                        Studio M will help you explore our extensive range of fixtures, fittings, colour
+                                        finishes and material selections.</p>
+
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-5">
                                     <a href="" class="btn btn-primary  rounded">Explore house designs</a>
-                                    <a href="" class="btn btn-primary2 text-white  rounded">Explore house land packages</a>
+                                    <a href="" class="btn btn-primary2 text-white  rounded">Explore house land
+                                        packages</a>
                                 </div>
                             </div>
-        
+
                         </div>
                     </div>
                     <div class="ht-80"></div>
-        
                 </div>
             </div>
         </div>
 
-      
+
 
         <footer class="dark-footer ">
             <div class=" call-to-act-wrap">
@@ -532,8 +678,49 @@
     <script src="assets/js/imagesloaded.js"></script>
     <script src="assets/js/custom.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const floorPlan = document.getElementById('floorPlan');
+            let scale = 1;
+            const scaleStep = 0.1;
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                scale += scaleStep;
+                floorPlan.style.transform = `scale(${scale})`;
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                if (scale > scaleStep) {
+                    scale -= scaleStep;
+                    floorPlan.style.transform = `scale(${scale})`;
+                }
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                scale = 1;
+                floorPlan.style.transform = 'scale(1)';
+            });
+        });
 
 
+    </script>
+    <script>
+        window.onscroll = function () {
+            stickyDesign();
+        };
+
+        var Design = document.getElementById("Design");
+        var sticky = Design.offsetTop;
+
+        function stickyDesign() {
+            if (window.pageYOffset >= sticky) {
+                Design.classList.add("sticky");
+            } else {
+                Design.classList.remove("sticky");
+            }
+        }
+
+    </script>
 </body>
 
 </html>
